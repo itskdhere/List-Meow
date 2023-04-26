@@ -1,0 +1,333 @@
+:root {
+    --bg-color: #dff1e7;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Ubuntu', sans-serif;
+    background-color: var(--bg-color);
+    user-select: none;
+}
+
+#nav {
+    font-family: 'Ubuntu', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+    background-color: #ade0d8;
+}
+
+
+#logo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    border: 0;
+    transform: translate(0%, 0%);
+}
+
+#logo-image {
+    width: 35px;
+    height: 35px;
+    margin-left: 1rem;
+}
+
+#logo-text {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.6rem;
+    margin-top: 0.5rem;
+    margin-left: 0rem;
+    margin-bottom: 0.5rem;
+    border: 0;
+    color: rgb(0, 0, 0);
+}
+
+#right-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    border: 0;
+}
+
+#profile-image {
+    width: 36px;
+    height: 36px;
+    border-radius: 100%;
+    margin-right: 1rem;
+    border: 0;
+    outline: none;
+}
+
+#signout-button {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+    margin-right: 1rem;
+    margin-bottom: 0.5rem;
+    padding: 8px;
+    border: 0;
+    border-radius: 20px;
+    outline: none;
+    cursor: pointer;
+    color: white;
+    background-color: #14a6d3;
+}
+
+#display-user-info-div {
+    background-color: #ade0d8;
+    color: white;
+}
+
+#display-user-info {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 0.77rem;
+    margin-top: 0rem;
+    margin-right: 0.3rem;
+    text-align: right;
+    padding-bottom: 5px;
+    padding-top: 0px;
+    outline: none;
+    user-select: text;
+}
+
+h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+#input-container-signed-in {
+    font-family: 'Ubuntu', sans-serif;
+    display: flex;
+    align-items: left;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 320px;
+    margin: 30px auto;
+    /* border: 1px solid red; */
+    background-image: url(sleeping-cat.svg);
+    background-repeat: no-repeat;
+    background-position: 118% -3.3%;
+    background-size: 180px 180px;
+}
+
+/* #cat-svg {
+    margin-left: 75%;
+    margin-top: 0%;
+    width: 100%;
+    height: 100%;
+    max-width: 169px;
+    max-height: 169px;
+    border: 1px solid red;
+} */
+
+#input-text {
+    font-family: 'Ubuntu', sans-serif;
+    width: 89%;
+    height: 2.5rem;
+    padding: 0.5rem;
+    border-radius: 6.9px;
+    border: 0;
+    outline: 2px solid #14d34d;;
+    /* outline: 2px solid #14d34d; */
+    font-size: 1.3rem;
+    color: black;
+    background-color: #d1e2d9;
+    text-align: center;
+    margin-top: 7rem;
+}
+
+#input-text:focus {
+    outline: 2px solid #14c6d3;
+}
+
+#add-button {
+    font-family: 'Ubuntu', sans-serif;
+    width: 99%;
+    height: 2.5rem;
+    padding: 0.5rem;
+    border-radius: 30px;
+    border: 0;
+    outline: none;
+    font-size: 1.3rem;
+    color: rgb(255, 255, 255);
+    background-color: #14d34d;
+    cursor: pointer;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    user-select: none;
+}
+
+#add-button:hover {
+    color: rgb(255, 255, 255);
+    background-color: #13aa41;
+}
+
+#add-button:active {
+    color: rgb(216, 216, 216);
+    background-color: #13aa41;
+}
+
+#list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    gap: 0.5rem;
+    padding: 7px;
+    max-width: 320px;
+    margin: 0 auto;
+    /* border: 1px solid red; */
+    border-radius: 10px;
+    background-color: #e9f7ef;
+    margin-bottom: 14rem;
+}
+
+#list li {
+    font-family: 'Ubuntu', sans-serif;
+    flex-grow: 1;
+    font-size: 1.3rem;
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #d8eb85;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    user-select: text;
+}
+
+#list li:hover {
+    background-color: #e41e1e;
+}
+
+#input-container-signed-out {
+    font-family: 'Ubuntu', sans-serif;
+    display: flex;
+    align-items: left;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 320px;
+    margin: 30px auto;
+    /* border: 1px solid red; */
+    background-image: url(sleeping-cat.svg);
+    background-repeat: no-repeat;
+    background-position: 118% 8.5%;
+    background-size: 180px 180px;
+}
+
+#email-input {
+    font-family: 'Ubuntu', sans-serif;
+    width: 89%;
+    height: 2.5rem;
+    padding: 0.5rem;
+    border-radius: 10px;
+    border: 0;
+    outline: 2px solid #14d34d;
+    font-size: 1.3rem;
+    color: black;
+    background-color: #d1e2d9;
+    text-align: center;
+    margin-top: 8rem;
+}
+
+#email-input:focus {
+    outline: 2px solid #14c6d3;
+}
+
+#password-input {
+    font-family: 'Ubuntu', sans-serif;
+    width: 89%;
+    height: 2.5rem;
+    padding: 0.5rem;
+    border-radius: 10px;
+    border: 0;
+    outline: 2px solid #14d34d;
+    font-size: 1.3rem;
+    color: black;
+    background-color: #d1e2d9;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+#password-input:focus {
+    outline: 2px solid #14c6d3;
+}
+
+#togglePassword {
+    text-align: center;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    transform: translate(17rem, -2.3rem);
+}
+
+#signin-button {
+    font-family: 'Ubuntu', sans-serif;
+    width: 95%;
+    height: 2.5rem;
+    padding: 0.5rem;
+    border-radius: 20px;
+    border: 0;
+    outline: none;
+    font-size: 1.3rem;
+    color: rgb(255, 255, 255);
+    background-color: #14d34d;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+#signin-button:hover {
+    color: rgb(255, 255, 255);
+    background-color: #13aa41;
+}
+
+#signin-button:active {
+    color: rgb(216, 216, 216);
+    background-color: #13aa41;
+}
+
+footer {
+    font-family: 'Ubuntu', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    text-emphasis: bold;
+}
+
+footer img {
+    padding-left: 5px;
+    width: 105px;
+}
+
+/*Scroll Bar*/
+/* width */
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #c2f0d9;
+    border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #37816f;
+    border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #46aca7;
+}

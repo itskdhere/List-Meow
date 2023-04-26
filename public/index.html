@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>List Meow</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.0/css/all.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section id="signed-in" hidden>
+        <nav id="nav">
+            <div id="logo">
+                <img src="favicon-32x32.png" id="logo-image">
+                <p id="logo-text">List Meow</p>
+            </div>
+            <div id="right-nav">
+                <button id="signout-button">Sign-Out</button>
+            </div>
+        </nav>
+
+        <div id="display-user-info-div">
+            <p id="display-user-info"></p>
+        </div>
+
+        <form id="input-container-signed-in" accept-charset="UTF-8" autocomplete="on">
+            <input type="text" id="input-text" placeholder="item name">
+            <button type="submit" id="add-button">+ add item to list</button>
+        </form>
+
+        <ul id="list"></ul>
+
+    </section>
+
+    <section id="signed-out" hidden>
+        <!-- <nav id="nav">
+            <div id="logo">
+                <img src="/favicon-32x32.png" id="logo-image">
+                <p id="logo-text">List</p>
+            </div>
+        </nav> -->
+
+        <h1>List Meow</h1>
+
+        <form id="input-container-signed-out" accept-charset="UTF-8" autocomplete="on">
+            <input type="email" name="email" id="email-input" placeholder="Enter Email" required>
+            <input type="password" name="password" id="password-input" placeholder="Enter Password" required>
+            <!-- <i class="fa-solid fa-eye" id="togglePassword"></i> -->
+            <img src="eye-slash-solid.svg" id="togglePassword">
+            <button type="submit" id="signin-button">Sign-In</button>
+        </form>
+
+    </section>
+
+    <script src="index.js" type="module" defer></script>
+</body>
+
+</html>
