@@ -1,0 +1,21 @@
+{
+  "name": "list-meow",
+  "version": "1.0.0",
+  "description": "List Meow",
+  "scripts": {
+    "deploy": "firebase deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itskdhere/List-Meow.git"
+  },
+  "author": "itskdhere",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/itskdhere/List-Meow/issues"
+  },
+  "homepage": "https://github.com/itskdhere/List-Meow#readme",
+  "devDependencies": {
+    "firebase-tools": "^11.29.1"
+  }
+}

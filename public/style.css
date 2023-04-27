@@ -87,7 +87,7 @@ body {
 
 #display-user-info {
     font-family: 'Ubuntu', sans-serif;
-    font-size: 0.77rem;
+    font-size: 0.69rem;
     margin-top: 0rem;
     margin-right: 0.3rem;
     text-align: right;
@@ -95,6 +95,7 @@ body {
     padding-top: 0px;
     outline: none;
     user-select: text;
+    color: black;
 }
 
 h1 {
