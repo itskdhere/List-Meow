@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
 import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-database.js";
-import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js";
 import firebaseConfig from './firebaseConfig.json' assert {type: 'json'};
 
 const inputText = document.getElementById('input-text');
@@ -19,6 +19,8 @@ const siggnedOutSection = document.getElementById('signed-out');
 const inputContainerSignedOut = document.getElementById('input-container-signed-out');
 const inputContainerSignedIn = document.getElementById('input-container-signed-in');
 
+const resetPasswordButton = document.getElementById('reset-password-button');
+const signinErrorBox = document.getElementById('sign-in-error-box');
 const displayUserInfo = document.getElementById('display-user-info');
 
 
@@ -34,6 +36,8 @@ onAuthStateChanged(auth, (user) => {
         siggnedOutSection.hidden = true;
 
         console.log(user);
+        console.log("Signed-In Successfully ✅");
+
         uuid = user.uid;
 
         displayUserInfo.textContent = `${user.uid} | ${user.email}`;
@@ -41,7 +45,7 @@ onAuthStateChanged(auth, (user) => {
         let dbRef = ref(database, `${uuid}`);
 
         onValue(dbRef, (snapshot) => {
-            // list.innerHTML = '';
+            console.log("Firebase Real-Time Database: 🟢");
             while (list.hasChildNodes()) {
                 list.removeChild(list.firstChild);
             }
@@ -64,7 +68,7 @@ onAuthStateChanged(auth, (user) => {
                 let newLi = document.createElement('li');
                 newLi.textContent = itemVal;
                 newLi.addEventListener('dblclick', () => {
-                    remove(ref(database, `${uuid}/${itemId}`)); // here
+                    remove(ref(database, `${uuid}/${itemId}`));
                 });
                 list.appendChild(newLi);
             }
@@ -81,41 +85,56 @@ signinButton.addEventListener('click', () => {
 
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            // Signed in
-            let user = userCredential.user;
-            console.log(user);
-
+            // let user = userCredential.user;
+            // console.log(user);
+            console.log('Sign-In Successful');
             emailInput.value = '';
             passwordInput.value = '';
         })
         .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode, errorMessage);
+            console.log(error);
+            signinErrorBox.hidden = false;
+            signinErrorBox.textContent = error.message;
+            setTimeout(() => {
+                signinErrorBox.hidden = true;
+                signinErrorBox.textContent = "";
+            }, 3000);
+        });
+});
+
+resetPasswordButton.addEventListener('click', () => {
+    let email = emailInput.value;
+
+    sendPasswordResetEmail(auth, email)
+        .then(() => {
+            alert(`Successfully Sent Password Reset Link To ${email}`);
+        })
+        .catch((error) => {
+            console.log(error);
+            signinErrorBox.hidden = false;
+            signinErrorBox.textContent = error.message;
+            setTimeout(() => {
+                signinErrorBox.hidden = true;
+                signinErrorBox.textContent = "";
+            }, 3000);
         });
 });
 
 signoutButton.addEventListener('click', () => {
     signOut(auth).then(() => {
-        // Sign-out successful.
-        console.log('Sign-out successful');
+        console.log('Sign-Out Successful');
     }).catch((error) => {
-        // An error happened.
         console.log(error);
     });
 });
 
 addButton.addEventListener('click', () => {
     let item = inputText.value;
-    //dbRef = ref(database, `${uuid}`);
     push(ref(database, `${uuid}`), item);
     inputText.value = '';
 });
 
 togglePassword.addEventListener('click', function (e) {
-    // const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-    // passwordInput.setAttribute('type', type);
-    // this.classList.toggle('fa-solid fa-eye-slash');
     if (passwordInput.type === "password") {
         passwordInput.type = "text";
         togglePassword.src = "eye-solid.svg";

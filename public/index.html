@@ -28,7 +28,8 @@
     <section id="signed-in" hidden>
         <nav id="nav">
             <div id="logo">
-                <img src="favicon-32x32.png" id="logo-image">
+                <a href="https://github.com/itskdhere/List-Meow" target="_blank">
+                <img src="favicon-32x32.png" id="logo-image"></a>
                 <p id="logo-text">List Meow</p>
             </div>
             <div id="right-nav">
@@ -50,21 +51,15 @@
     </section>
 
     <section id="signed-out" hidden>
-        <!-- <nav id="nav">
-            <div id="logo">
-                <img src="/favicon-32x32.png" id="logo-image">
-                <p id="logo-text">List</p>
-            </div>
-        </nav> -->
-
         <h1>List Meow</h1>
 
         <form id="input-container-signed-out" accept-charset="UTF-8" autocomplete="on">
             <input type="email" name="email" id="email-input" placeholder="Enter Email" required>
             <input type="password" name="password" id="password-input" placeholder="Enter Password" required>
-            <!-- <i class="fa-solid fa-eye" id="togglePassword"></i> -->
             <img src="eye-slash-solid.svg" id="togglePassword">
             <button type="submit" id="signin-button">Sign-In</button>
+            <button type="submit" id="reset-password-button">Reset Password</button>
+            <p id="sign-in-error-box" hidden>Firebase: Error (auth/wrong-password).</p>
         </form>
 
     </section>
