@@ -126,17 +126,22 @@ signupButton.addEventListener('click', (e) => {
             // let user = userCredential.user;
             // console.log(user);
             console.log('Sign-Up Successful');
-            nameInput.value = '';
             emailInputSignup.value = '';
             passwordInputSignup.value = '';
             signupButton.textContent = 'Redirecting...';
             signupButton.style.backgroundColor = '#14d34d';
+
             setTimeout(() => {
                 updateProfile(auth.currentUser, {
                     displayName: `${name}`
                 }).catch((error) => {
                     console.log(error);
                 });
+
+                nameInput.value = '';
+                e.target.disabled = false;
+                signupButton.textContent = 'Sign-Up';
+                signupButton.style.cursor = 'pointer';
             }, 2000);
         })
         .catch((error) => {
@@ -170,6 +175,12 @@ signinButton.addEventListener('click', (e) => {
             console.log('Sign-In Successful');
             emailInputSignin.value = '';
             passwordInputSignin.value = '';
+            setTimeout(() => {
+                e.target.disabled = false;
+                signinButton.textContent = 'Sign-In';
+                signinButton.style.cursor = 'pointer';
+                signinButton.style.backgroundColor = '#14d34d';
+            }, 2000);
         })
         .catch((error) => {
             console.log(error);
