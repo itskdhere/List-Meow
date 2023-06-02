@@ -463,21 +463,26 @@ h1 {
     margin-bottom: 1rem;
 }
 
-footer {
+footer a {
     font-family: 'Ubuntu', sans-serif;
+    font-size: 1.2rem;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    margin-bottom: 0.5rem;
-    font-size: 1.2rem;
-    text-emphasis: bold;
+    text-decoration: none;
+    color: rgb(30, 30, 30);
+}
+
+footer a:hover {
+    text-decoration: underline;
 }
 
 footer img {
-    padding-left: 5px;
-    width: 105px;
+    height: 1.5rem;
+    margin-right: 5px;
 }
+
 
 /*Scroll Bar*/
 /* width */
