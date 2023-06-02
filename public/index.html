@@ -8,20 +8,14 @@
 
     <title>List Meow</title>
 
+    <link rel="stylesheet" href="style.css">
+
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="manifest" href="site.webmanifest">
 
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap">
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.0/css/all.css">
-
-    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -29,7 +23,7 @@
         <nav id="nav">
             <div id="logo">
                 <a href="https://github.com/itskdhere/List-Meow" target="_blank">
-                <img src="favicon-32x32.png" id="logo-image"></a>
+                    <img src="favicon-32x32.png" id="logo-image"></a>
                 <p id="logo-text">List Meow</p>
             </div>
             <div id="right-nav">
@@ -53,13 +47,28 @@
     <section id="signed-out" hidden>
         <h1>List Meow</h1>
 
-        <form id="input-container-signed-out" accept-charset="UTF-8" autocomplete="on">
-            <input type="email" name="email" id="email-input" placeholder="Enter Email" required>
-            <input type="password" name="password" id="password-input" placeholder="Enter Password" required>
-            <img src="eye-slash-solid.svg" id="togglePassword">
+        <form id="input-container-sign-in" accept-charset="UTF-8" autocomplete="on">
+            <input type="email" name="email" id="email-input-signin" class="email-input-signin"
+                placeholder="Enter Email" autocomplete="on" required>
+            <input type="password" name="password" id="password-input-signin" class="password-input"
+                placeholder="Enter Password" autocomplete="on" required>
+            <img src="eye-slash-solid.svg" id="toggle-password-eye-signin" class="togglePassword">
             <button type="submit" id="signin-button">Sign-In</button>
             <button type="submit" id="reset-password-button">Reset Password</button>
+            <p id="sign-up-refer">Don't have an account ? <button type="button">Sign-Up</button></p>
             <p id="sign-in-error-box" hidden>Firebase: Error (auth/wrong-password).</p>
+        </form>
+
+        <form id="input-container-sign-up" accept-charset="UTF-8" autocomplete="on">
+            <input type="text" name="name" id="name-input" placeholder="Enter Name" autocomplete="on" required>
+            <input type="email" name="email" id="email-input-signup" class="email-input-signup"
+                placeholder="Enter Email" autocomplete="on" required>
+            <input type="password" name="password" id="password-input-signup" class="password-input"
+                placeholder="Enter Password" autocomplete="on" required>
+            <img src="eye-slash-solid.svg" id="toggle-password-eye-signup" class="togglePassword">
+            <button type="submit" id="signup-button">Sign-Up</button>
+            <p id="sign-in-refer">Already have an account ? <button type="button">Sign-In</button></p>
+            <p id="sign-up-error-box" hidden>Firebase: Error (auth/wrong-password).</p>
         </form>
 
     </section>

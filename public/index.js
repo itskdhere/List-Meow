@@ -1,27 +1,44 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
 import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-database.js";
-import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js";
+import {
+    getAuth, updateProfile, signOut, createUserWithEmailAndPassword,
+    signInWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail
+}
+    from "https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js";
+
 import firebaseConfig from './firebaseConfig.json' assert {type: 'json'};
 
 const inputText = document.getElementById('input-text');
 const addButton = document.getElementById('add-button');
 const list = document.getElementById('list');
 
-const emailInput = document.getElementById('email-input');
-const passwordInput = document.getElementById('password-input');
+const nameInput = document.getElementById('name-input');
+const emailInputSignin = document.getElementById('email-input-signin');
+const emailInputSignup = document.getElementById('email-input-signup');
+const passwordInputSignin = document.getElementById('password-input-signin');
+const passwordInputSignup = document.getElementById('password-input-signup');
+const signupButton = document.getElementById('signup-button');
 const signinButton = document.getElementById('signin-button');
 const signoutButton = document.getElementById('signout-button');
-const togglePassword = document.getElementById('togglePassword');
+
+const togglePasswordSignup = document.getElementById('toggle-password-eye-signup');
+const togglePasswordSignin = document.getElementById('toggle-password-eye-signin');
 
 const siggnedInSection = document.getElementById('signed-in');
 const siggnedOutSection = document.getElementById('signed-out');
 
-const inputContainerSignedOut = document.getElementById('input-container-signed-out');
+const inputContainerSignUp = document.getElementById('input-container-sign-up');
+const inputContainerSignIn = document.getElementById('input-container-sign-in');
+
 const inputContainerSignedIn = document.getElementById('input-container-signed-in');
 
 const resetPasswordButton = document.getElementById('reset-password-button');
 const signinErrorBox = document.getElementById('sign-in-error-box');
+const signUpErrorBox = document.getElementById('sign-up-error-box');
 const displayUserInfo = document.getElementById('display-user-info');
+
+const signUpRefer = document.getElementById('sign-up-refer');
+const signInRefer = document.getElementById('sign-in-refer');
 
 
 const app = initializeApp(firebaseConfig);
@@ -79,17 +96,80 @@ onAuthStateChanged(auth, (user) => {
     }
 });
 
-signinButton.addEventListener('click', () => {
-    let email = emailInput.value;
-    let password = passwordInput.value;
+window.addEventListener('load', () => {
+    inputContainerSignIn.style.display = "none";
+    inputContainerSignUp.style.display = "block";
+});
+
+signInRefer.addEventListener('click', () => {
+    inputContainerSignUp.style.display = "none";
+    inputContainerSignIn.style.display = "block";
+});
+
+signUpRefer.addEventListener('click', () => {
+    inputContainerSignUp.style.display = "block";
+    inputContainerSignIn.style.display = "none";
+});
+
+signupButton.addEventListener('click', (e) => {
+    e.target.disabled = true;
+    signupButton.textContent = 'Processing...';
+    signupButton.style.cursor = 'not-allowed';
+    signupButton.style.backgroundColor = '#81be0e';
+
+    let name = nameInput.value;
+    let email = emailInputSignup.value;
+    let password = passwordInputSignup.value;
+
+    createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // let user = userCredential.user;
+            // console.log(user);
+            console.log('Sign-Up Successful');
+            nameInput.value = '';
+            emailInputSignup.value = '';
+            passwordInputSignup.value = '';
+            signupButton.textContent = 'Redirecting...';
+            signupButton.style.backgroundColor = '#14d34d';
+            setTimeout(() => {
+                updateProfile(auth.currentUser, {
+                    displayName: `${name}`
+                }).catch((error) => {
+                    console.log(error);
+                });
+            }, 2000);
+        })
+        .catch((error) => {
+            console.log(error);
+            signUpErrorBox.hidden = false;
+            signUpErrorBox.textContent = error.message;
+            setTimeout(() => {
+                signUpErrorBox.hidden = true;
+                signUpErrorBox.textContent = "";
+                e.target.disabled = false;
+                signupButton.textContent = 'Sign-Up';
+                signupButton.style.cursor = 'pointer';
+                signupButton.style.backgroundColor = '#14d34d';
+            }, 3000);
+        });
+});
+
+signinButton.addEventListener('click', (e) => {
+    e.target.disabled = true;
+    signinButton.textContent = 'Authenticating...';
+    signinButton.style.cursor = 'not-allowed';
+    signinButton.style.backgroundColor = '#81be0e';
+
+    let email = emailInputSignin.value;
+    let password = passwordInputSignin.value;
 
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // let user = userCredential.user;
             // console.log(user);
             console.log('Sign-In Successful');
-            emailInput.value = '';
-            passwordInput.value = '';
+            emailInputSignin.value = '';
+            passwordInputSignin.value = '';
         })
         .catch((error) => {
             console.log(error);
@@ -98,16 +178,31 @@ signinButton.addEventListener('click', () => {
             setTimeout(() => {
                 signinErrorBox.hidden = true;
                 signinErrorBox.textContent = "";
+                e.target.disabled = false;
+                signinButton.textContent = 'Sign-In';
+                signinButton.style.cursor = 'pointer';
+                signinButton.style.backgroundColor = '#14d34d';
             }, 3000);
         });
 });
 
-resetPasswordButton.addEventListener('click', () => {
-    let email = emailInput.value;
+resetPasswordButton.addEventListener('click', (e) => {
+    e.target.disabled = true;
+    resetPasswordButton.textContent = 'Procssing...';
+    resetPasswordButton.style.cursor = 'not-allowed';
+    resetPasswordButton.style.backgroundColor = '#81be0e';
+
+    let email = emailInputSignin.value;
 
     sendPasswordResetEmail(auth, email)
         .then(() => {
-            alert(`Successfully Sent Password Reset Link To ${email}`);
+            setTimeout(() => {
+                e.target.disabled = false;
+                resetPasswordButton.textContent = 'Reset Password';
+                resetPasswordButton.style.cursor = 'pointer';
+                resetPasswordButton.style.backgroundColor = '#10bfd6';
+                alert(`Successfully Sent Password Reset Link To ${email}`);
+            }, 2000);
         })
         .catch((error) => {
             console.log(error);
@@ -134,17 +229,27 @@ addButton.addEventListener('click', () => {
     inputText.value = '';
 });
 
-togglePassword.addEventListener('click', function (e) {
-    if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-        togglePassword.src = "eye-solid.svg";
+togglePasswordSignin.addEventListener('click', function (e) {
+    if (passwordInputSignin.type === "password") {
+        passwordInputSignin.type = "text";
+        togglePasswordSignin.src = "eye-solid.svg";
     } else {
-        passwordInput.type = "password";
-        togglePassword.src = "eye-slash-solid.svg";
+        passwordInputSignin.type = "password";
+        togglePasswordSignin.src = "eye-slash-solid.svg";
     }
 });
 
-inputContainerSignedOut.addEventListener('click', (e) => {
+togglePasswordSignup.addEventListener('click', function (e) {
+    if (passwordInputSignup.type === "password") {
+        passwordInputSignup.type = "text";
+        togglePasswordSignup.src = "eye-solid.svg";
+    } else {
+        passwordInputSignup.type = "password";
+        togglePasswordSignup.src = "eye-slash-solid.svg";
+    }
+});
+
+inputContainerSignIn.addEventListener('click', (e) => {
     e.preventDefault();
 });
 

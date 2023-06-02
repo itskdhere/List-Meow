@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
 :root {
     --bg-color: #dff1e7;
 }
@@ -131,7 +133,7 @@ h1 {
     padding: 0.5rem;
     border-radius: 6.9px;
     border: 0;
-    outline: 2px solid #14d34d;;
+    outline: 2px solid #14d34d;
     /* outline: 2px solid #14d34d; */
     font-size: 1.3rem;
     color: black;
@@ -202,7 +204,7 @@ h1 {
     background-color: #e41e1e;
 }
 
-#input-container-signed-out {
+#input-container-sign-in {
     font-family: 'Ubuntu', sans-serif;
     display: flex;
     align-items: left;
@@ -210,14 +212,27 @@ h1 {
     flex-direction: column;
     max-width: 320px;
     margin: 30px auto;
-    /* border: 1px solid red; */
     background-image: url(sleeping-cat.svg);
     background-repeat: no-repeat;
-    background-position: 118% 6.4%;
+    background-position: 118% 5.5%;
     background-size: 180px 180px;
 }
 
-#email-input {
+#input-container-sign-up {
+    font-family: 'Ubuntu', sans-serif;
+    display: flex;
+    align-items: left;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 320px;
+    margin: 30px auto;
+    background-image: url(sleeping-cat.svg);
+    background-repeat: no-repeat;
+    background-position: 118% 5.5%;
+    background-size: 180px 180px;
+}
+
+#name-input {
     font-family: 'Ubuntu', sans-serif;
     width: 89%;
     height: 2.5rem;
@@ -232,11 +247,30 @@ h1 {
     margin-top: 8rem;
 }
 
-#email-input:focus {
+#name-input:focus {
     outline: 2px solid #14c6d3;
 }
 
-#password-input {
+.email-input-signin {
+    font-family: 'Ubuntu', sans-serif;
+    width: 89%;
+    height: 2.5rem;
+    padding: 0.5rem;
+    border-radius: 10px;
+    border: 0;
+    outline: 2px solid #14d34d;
+    font-size: 1.3rem;
+    color: black;
+    background-color: #d1e2d9;
+    text-align: center;
+    margin-top: 8rem;
+}
+
+.email-input-signin:focus {
+    outline: 2px solid #14c6d3;
+}
+
+.email-input-signup {
     font-family: 'Ubuntu', sans-serif;
     width: 89%;
     height: 2.5rem;
@@ -251,11 +285,31 @@ h1 {
     margin-top: 1rem;
 }
 
-#password-input:focus {
+.email-input-signup:focus {
     outline: 2px solid #14c6d3;
 }
 
-#togglePassword {
+
+.password-input {
+    font-family: 'Ubuntu', sans-serif;
+    width: 89%;
+    height: 2.5rem;
+    padding: 0.5rem;
+    border-radius: 10px;
+    border: 0;
+    outline: 2px solid #14d34d;
+    font-size: 1.3rem;
+    color: black;
+    background-color: #d1e2d9;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.password-input:focus {
+    outline: 2px solid #14c6d3;
+}
+
+.togglePassword {
     text-align: center;
     cursor: pointer;
     width: 20px;
@@ -284,10 +338,27 @@ h1 {
     background-color: #13aa41;
 }
 
-#signin-button:active {
-    color: rgb(216, 216, 216);
+#signup-button {
+    font-family: 'Ubuntu', sans-serif;
+    width: 95%;
+    height: 2.5rem;
+    padding: 0.5rem;
+    border-radius: 20px;
+    border: 0;
+    outline: none;
+    font-size: 1.3rem;
+    color: rgb(255, 255, 255);
+    background-color: #14d34d;
+    cursor: pointer;
+    margin-top: 0rem;
+    margin-bottom: 1rem;
+}
+
+#signup-button:hover {
+    color: rgb(255, 255, 255);
     background-color: #13aa41;
 }
+
 
 #reset-password-button {
     font-family: 'Ubuntu', sans-serif;
@@ -301,8 +372,8 @@ h1 {
     color: rgb(255, 255, 255);
     background-color: #10bfd6;
     cursor: pointer;
-    margin-top: 0.5rem;
-    margin-bottom: 2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
 }
 
 #reset-password-button:hover {
@@ -310,9 +381,54 @@ h1 {
     background-color: #0e9db4;
 }
 
-#reset-password-button:active {
-    color: rgb(216, 216, 216);
-    background-color: #0e9db4;
+#sign-up-refer {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+#sign-up-refer button {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.2rem;
+    border-radius: 20px;
+    padding: 5px;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    color: rgb(25, 45, 210);
+    background-color: var(--bg-color);
+}
+
+#sign-up-refer button:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+}
+
+#sign-in-refer {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+#sign-in-refer button {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.2rem;
+    border-radius: 20px;
+    padding: 5px;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    color: rgb(25, 45, 210);
+    background-color: var(--bg-color);
+}
+
+#sign-in-refer button:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
 }
 
 #sign-in-error-box {
@@ -328,6 +444,23 @@ h1 {
     outline: 2px solid rgb(20, 211, 77);
     color: rgb(230, 24, 24);
     background-color: rgb(232, 247, 22);
+    margin-bottom: 1rem;
+}
+
+#sign-up-error-box {
+    font-family: 'Ubuntu', sans-serif;
+    position: absolute;
+    top: 30rem;
+    font-size: 1.3rem;
+    max-width: 301.5px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    border-radius: 10px;
+    text-align: center;
+    outline: 2px solid rgb(20, 211, 77);
+    color: rgb(230, 24, 24);
+    background-color: rgb(232, 247, 22);
+    margin-bottom: 1rem;
 }
 
 footer {
