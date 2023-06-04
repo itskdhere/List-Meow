@@ -212,7 +212,7 @@ resetPasswordButton.addEventListener('click', (e) => {
                 resetPasswordButton.textContent = 'Reset Password';
                 resetPasswordButton.style.cursor = 'pointer';
                 resetPasswordButton.style.backgroundColor = '#10bfd6';
-                alert(`Successfully Sent Password Reset Link To ${email}`);
+                alert(`✔ Successfully Sent Password Reset Link To ${email}`);
             }, 2000);
         })
         .catch((error) => {
