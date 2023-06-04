@@ -41,7 +41,7 @@
 # Self-Hosting Guide:
 Comming Soon... (Cause I'm Lazy) 😪
 
-Till then, you can use the hosted version here: [listmeow.web.app](https://list-meow.web.app)
+Till then, you can use the hosted version here: [listmeow.web.app](https://listmeow.web.app)
 
 # Others:
 #### 📝 License: [MIT](https://github.com/itskdhere/List-Meow/blob/main/LICENSE)
