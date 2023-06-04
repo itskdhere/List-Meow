@@ -111,6 +111,10 @@ h1 {
     margin-bottom: 1rem;
 }
 
+h4 {
+    text-align: center;
+}
+
 #input-container-signed-in {
     font-family: 'Ubuntu', sans-serif;
     display: flex;
@@ -211,11 +215,15 @@ h1 {
     justify-content: center;
     flex-direction: column;
     max-width: 320px;
-    margin: 30px auto;
+    margin: 50px auto;
     background-image: url(sleeping-cat.svg);
     background-repeat: no-repeat;
-    background-position: 118% 5.5%;
+    background-position: 116% 5.5%;
     background-size: 180px 180px;
+    padding-left: 18px;
+    padding-bottom: 5px;
+    border-radius: 15px;
+    box-shadow: 1px 2px 8px 5px rgba(0, 0, 0, 0.623);
 }
 
 #input-container-sign-up {
@@ -225,11 +233,15 @@ h1 {
     justify-content: center;
     flex-direction: column;
     max-width: 320px;
-    margin: 30px auto;
+    margin: 50px auto;
     background-image: url(sleeping-cat.svg);
     background-repeat: no-repeat;
-    background-position: 118% 5.5%;
+    background-position: 116% 5.5%;
     background-size: 180px 180px;
+    padding-left: 18px;
+    padding-bottom: 5px;
+    border-radius: 15px;
+    box-shadow: 1px 2px 8px 5px rgba(0, 0, 0, 0.623);
 }
 
 #name-input {
@@ -385,6 +397,7 @@ h1 {
     font-family: 'Ubuntu', sans-serif;
     font-size: 1.2rem;
     text-align: center;
+    margin-right: 8px;
 }
 
 #sign-up-refer button {
@@ -410,6 +423,7 @@ h1 {
     font-family: 'Ubuntu', sans-serif;
     font-size: 1.2rem;
     text-align: center;
+    margin-right: 7px;
 }
 
 #sign-in-refer button {
@@ -463,9 +477,7 @@ h1 {
     margin-bottom: 1rem;
 }
 
-footer a {
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 1.2rem;
+#github-repo-link {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -474,15 +486,19 @@ footer a {
     color: rgb(30, 30, 30);
 }
 
-footer a:hover {
+#github-repo-link:hover {
     text-decoration: underline;
 }
 
-footer img {
-    height: 1.5rem;
+#github-repo-link img {
+    height: 1.6rem;
     margin-right: 5px;
 }
 
+#github-repo-link p {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.2rem;
+}
 
 /*Scroll Bar*/
 /* width */
