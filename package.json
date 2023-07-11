@@ -1,6 +1,6 @@
 {
   "name": "list-meow",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "List Meow",
   "scripts": {
     "deploy": "firebase deploy"
@@ -16,6 +16,6 @@
   },
   "homepage": "https://github.com/itskdhere/List-Meow#readme",
   "devDependencies": {
-    "firebase-tools": "^12.4.2"
+    "firebase-tools": "^12.4.3"
   }
 }
