@@ -243,20 +243,20 @@ addButton.addEventListener('click', () => {
 togglePasswordSignin.addEventListener('click', function (e) {
     if (passwordInputSignin.type === "password") {
         passwordInputSignin.type = "text";
-        togglePasswordSignin.src = "eye-solid.svg";
+        togglePasswordSignin.src = "svg/eye-solid.svg";
     } else {
         passwordInputSignin.type = "password";
-        togglePasswordSignin.src = "eye-slash-solid.svg";
+        togglePasswordSignin.src = "svg/eye-slash-solid.svg";
     }
 });
 
 togglePasswordSignup.addEventListener('click', function (e) {
     if (passwordInputSignup.type === "password") {
         passwordInputSignup.type = "text";
-        togglePasswordSignup.src = "eye-solid.svg";
+        togglePasswordSignup.src = "svg/eye-solid.svg";
     } else {
         passwordInputSignup.type = "password";
-        togglePasswordSignup.src = "eye-slash-solid.svg";
+        togglePasswordSignup.src = "svg/eye-slash-solid.svg";
     }
 });
 

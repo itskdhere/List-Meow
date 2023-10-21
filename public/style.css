@@ -111,8 +111,10 @@ h1 {
     margin-bottom: 1rem;
 }
 
-h4 {
+h2 {
     text-align: center;
+    font-size: 1.05rem;
+    padding: 5px 15px 0px 15px;
 }
 
 #input-container-signed-in {
@@ -124,9 +126,9 @@ h4 {
     max-width: 320px;
     margin: 30px auto;
     /* border: 1px solid red; */
-    background-image: url(sleeping-cat.svg);
+    background-image: url(svg/sleeping-cat.svg);
     background-repeat: no-repeat;
-    background-position: 118% -3.3%;
+    background-position: 117.5% -1.5%;
     background-size: 180px 180px;
 }
 
@@ -214,16 +216,16 @@ h4 {
     align-items: left;
     justify-content: center;
     flex-direction: column;
-    max-width: 320px;
+    max-width: 330px;
     margin: 50px auto;
-    background-image: url(sleeping-cat.svg);
+    background-image: url(svg/sleeping-cat.svg);
     background-repeat: no-repeat;
-    background-position: 116% 5.5%;
+    background-position: 113.5% 5%;
     background-size: 180px 180px;
     padding-left: 18px;
     padding-bottom: 5px;
     border-radius: 15px;
-    box-shadow: 1px 2px 8px 5px rgba(0, 0, 0, 0.623);
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.5);
 }
 
 #input-container-sign-up {
@@ -232,16 +234,16 @@ h4 {
     align-items: left;
     justify-content: center;
     flex-direction: column;
-    max-width: 320px;
+    max-width: 330px;
     margin: 50px auto;
-    background-image: url(sleeping-cat.svg);
+    background-image: url(svg/sleeping-cat.svg);
     background-repeat: no-repeat;
-    background-position: 116% 5.5%;
+    background-position: 113.5% 5%;
     background-size: 180px 180px;
     padding-left: 18px;
     padding-bottom: 5px;
     border-radius: 15px;
-    box-shadow: 1px 2px 8px 5px rgba(0, 0, 0, 0.623);
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.5);
 }
 
 #name-input {
