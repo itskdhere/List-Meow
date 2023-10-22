@@ -6,7 +6,7 @@
 
 <hr>
 
-#### The Only Cross-Platform, Blazingly-Fast, Real-Time, Secure To-Do List You'll Ever Need !!
+#### The Only Cross-Platform, Blazingly-Fast, Real-Time, Secure List You'll Ever Need !!
 
 ### Try Now: [listmeow.web.app](https://listmeow.web.app)
 
@@ -22,7 +22,7 @@
 - Real-Time:
     - Changes made from one device are reflected in real-time to all other devices logged in with the same account (No need to refresh the page).
 - PWA:
-    - Can be added to the home screen.
+    - Can be Installed as a PWA (Progressive Web App) on all devices with a web browser.
 
 # Tech Stack:
 - Frontend:
