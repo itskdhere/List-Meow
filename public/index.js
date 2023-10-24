@@ -2,7 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebas
 import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-database.js";
 import {
     getAuth, updateProfile, signOut, createUserWithEmailAndPassword,
-    signInWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail
+    signInWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, sendEmailVerification
 }
     from "https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js";
 
@@ -26,6 +26,7 @@ const togglePasswordSignin = document.getElementById('toggle-password-eye-signin
 
 const siggnedInSection = document.getElementById('signed-in');
 const siggnedOutSection = document.getElementById('signed-out');
+const verifyEmailSection = document.getElementById('verify-email-section');
 
 const inputContainerSignUp = document.getElementById('input-container-sign-up');
 const inputContainerSignIn = document.getElementById('input-container-sign-in');
@@ -36,6 +37,10 @@ const resetPasswordButton = document.getElementById('reset-password-button');
 const signinErrorBox = document.getElementById('sign-in-error-box');
 const signUpErrorBox = document.getElementById('sign-up-error-box');
 const displayUserInfo = document.getElementById('display-user-info');
+
+const verifyEmailAddress = document.getElementById('verify-email-address');
+const resendVerificationEmailButton = document.getElementById('resend-verification-email-button');
+
 
 const signUpRefer = document.getElementById('sign-up-refer');
 const signInRefer = document.getElementById('sign-in-refer');
@@ -49,8 +54,25 @@ let uuid;
 
 onAuthStateChanged(auth, (user) => {
     if (user) {
-        siggnedInSection.hidden = false;
         siggnedOutSection.hidden = true;
+
+        if (user.emailVerified) {
+            verifyEmailSection.style.display = "none";
+            siggnedInSection.hidden = false;
+        } else {
+            verifyEmailSection.style.display = "flex";
+            siggnedInSection.hidden = true;
+        }
+
+        resendVerificationEmailButton.addEventListener('click', () => {
+            sendEmailVerification(auth.currentUser)
+                .then(() => {
+                    alert(`✔ Successfully Sent Verification Email To ${user.email}`);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        });
 
         console.log(user);
         console.log("Signed-In Successfully ✅");
@@ -58,6 +80,7 @@ onAuthStateChanged(auth, (user) => {
         uuid = user.uid;
 
         displayUserInfo.textContent = `${user.uid} | ${user.email}`;
+        verifyEmailAddress.textContent = `${user.email}`;
 
         let dbRef = ref(database, `${uuid}`);
 
@@ -93,6 +116,7 @@ onAuthStateChanged(auth, (user) => {
     } else {
         siggnedInSection.hidden = true;
         siggnedOutSection.hidden = false;
+        verifyEmailSection.style.display = "none";
     }
 });
 

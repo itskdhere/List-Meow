@@ -8,7 +8,8 @@
     <meta name="theme-color" content="#dff1e7" />
 
     <title>List Meow</title>
-    <meta name="description" content="The Only Cross-Platform, Blazingly-Fast, Real-Time, Secure List You'll Ever Need !!">
+    <meta name="description"
+        content="The Only Cross-Platform, Blazingly-Fast, Real-Time, Secure List You'll Ever Need !!">
 
     <link rel="stylesheet" href="style.css">
 
@@ -48,15 +49,17 @@
     </section>
 
     <section id="signed-out" hidden>
-        <h1>List Meow</h1>
-        <h2>The Only Cross-Platform, Blazingly-Fast, Real-Time, Secure List You'll Ever Need !!</h2>
+        <h1 id="landing-name">List Meow</h1>
+        <h2 id="landing-details">The Only Cross-Platform, Blazingly-Fast, Real-Time, Secure List You'll Ever Need !!
+        </h2>
 
         <form id="input-container-sign-in" accept-charset="UTF-8" autocomplete="on">
             <input type="email" name="email" id="email-input-signin" class="email-input-signin"
                 placeholder="Enter Email" autocomplete="on" required>
             <input type="password" name="password" id="password-input-signin" class="password-input"
                 placeholder="Enter Password" autocomplete="on" required>
-            <img src="svg/eye-slash-solid.svg" id="toggle-password-eye-signin" class="togglePassword" alt="Toggle Password">
+            <img src="svg/eye-slash-solid.svg" id="toggle-password-eye-signin" class="togglePassword"
+                alt="Toggle Password">
             <button type="submit" id="signin-button">Sign-In</button>
             <button type="submit" id="reset-password-button">Reset Password</button>
             <p id="sign-up-refer">Don't have an account ? <button type="button">Sign-Up</button></p>
@@ -69,7 +72,8 @@
                 placeholder="Enter Email" autocomplete="on" required>
             <input type="password" name="password" id="password-input-signup" class="password-input"
                 placeholder="Enter Password" autocomplete="on" required>
-            <img src="svg/eye-slash-solid.svg" id="toggle-password-eye-signup" class="togglePassword" alt="Toggle Password">
+            <img src="svg/eye-slash-solid.svg" id="toggle-password-eye-signup" class="togglePassword"
+                alt="Toggle Password">
             <button type="submit" id="signup-button">Sign-Up</button>
             <p id="sign-in-refer">Already have an account ? <button type="button">Sign-In</button></p>
             <p id="sign-up-error-box" hidden>Firebase: Error (auth/wrong-password).</p>
@@ -82,6 +86,23 @@
             <p>itskdhere/List-Meow</p>
         </a>
 
+    </section>
+
+    <section id="verify-email-section">
+        <div id="verify-email-container">
+            <h1 id="verify-email-h1">Verify Email</h1>
+            <p id="verify-email-details">
+                A verification Email has been sent to <span id="verify-email-address"><i></i></span>
+                <br><br>
+                Please verify your email address to continue using <b>ListMeow</b>.
+                <br><br>
+                If you don't see the email, please check the spam folder.
+            </p>
+            <p id="verify-email-resend">
+                Didn't receive an email ? <br>
+                <button type="button" id="resend-verification-email-button">Resend Verification Email</button>
+            </p>
+        </div>
     </section>
 
     <script src="index.js" type="module" defer></script>
