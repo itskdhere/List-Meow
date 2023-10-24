@@ -20,6 +20,7 @@ const passwordInputSignup = document.getElementById('password-input-signup');
 const signupButton = document.getElementById('signup-button');
 const signinButton = document.getElementById('signin-button');
 const signoutButton = document.getElementById('signout-button');
+const emailSignoutButton = document.getElementById('email-signout-button');
 
 const togglePasswordSignup = document.getElementById('toggle-password-eye-signup');
 const togglePasswordSignin = document.getElementById('toggle-password-eye-signin');
@@ -257,6 +258,15 @@ signoutButton.addEventListener('click', () => {
         console.log(error);
     });
 });
+
+emailSignoutButton.addEventListener('click', () => {
+    signOut(auth).then(() => {
+        console.log('Sign-Out Successful');
+    }).catch((error) => {
+        console.log(error);
+    });
+});
+
 
 addButton.addEventListener('click', () => {
     let item = inputText.value;
