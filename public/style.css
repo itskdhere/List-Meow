@@ -535,6 +535,10 @@ body {
     padding: 0px 15px 0px 15px;
 }
 
+#verify-email-address {
+    font-style: italic;
+}
+
 #verify-email-resend {
     text-align: center;
     font-size: 1rem;

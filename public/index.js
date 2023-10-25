@@ -52,6 +52,9 @@ const auth = getAuth(app);
 const database = getDatabase(app);
 let uuid;
 
+const actionCodeSettings = {
+    url: `${window.location.href}`
+};
 
 onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -66,8 +69,9 @@ onAuthStateChanged(auth, (user) => {
         }
 
         resendVerificationEmailButton.addEventListener('click', () => {
-            sendEmailVerification(auth.currentUser)
+            sendEmailVerification(auth.currentUser, actionCodeSettings)
                 .then(() => {
+                    console.log(`✔ Successfully Sent Verification Email To ${user.email}`);
                     alert(`✔ Successfully Sent Verification Email To ${user.email}`);
                 })
                 .catch((error) => {
@@ -148,13 +152,21 @@ signupButton.addEventListener('click', (e) => {
 
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            // let user = userCredential.user;
-            // console.log(user);
+            let user = userCredential.user;
+            console.log(user);
             console.log('Sign-Up Successful');
             emailInputSignup.value = '';
             passwordInputSignup.value = '';
             signupButton.textContent = 'Redirecting...';
             signupButton.style.backgroundColor = '#14d34d';
+
+            sendEmailVerification(auth.currentUser, actionCodeSettings)
+                .then(() => {
+                    console.log(`✔ Successfully Sent Verification Email To ${user.email}`);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
 
             setTimeout(() => {
                 updateProfile(auth.currentUser, {
@@ -230,7 +242,7 @@ resetPasswordButton.addEventListener('click', (e) => {
 
     let email = emailInputSignin.value;
 
-    sendPasswordResetEmail(auth, email)
+    sendPasswordResetEmail(auth, email, actionCodeSettings)
         .then(() => {
             setTimeout(() => {
                 e.target.disabled = false;
