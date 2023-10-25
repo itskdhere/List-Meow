@@ -52,7 +52,11 @@ const auth = getAuth(app);
 const database = getDatabase(app);
 let uuid;
 
-const actionCodeSettings = {
+const actionCodeSettingsVerifyEmail = {
+    url: `${window.location.href}?reSignIn=true`
+};
+
+const actionCodeSettingsPasswordReset = {
     url: `${window.location.href}`
 };
 
@@ -69,7 +73,7 @@ onAuthStateChanged(auth, (user) => {
         }
 
         resendVerificationEmailButton.addEventListener('click', () => {
-            sendEmailVerification(auth.currentUser, actionCodeSettings)
+            sendEmailVerification(auth.currentUser, actionCodeSettingsVerifyEmail)
                 .then(() => {
                     console.log(`✔ Successfully Sent Verification Email To ${user.email}`);
                     alert(`✔ Successfully Sent Verification Email To ${user.email}`);
@@ -126,8 +130,20 @@ onAuthStateChanged(auth, (user) => {
 });
 
 window.addEventListener('load', () => {
-    inputContainerSignIn.style.display = "none";
-    inputContainerSignUp.style.display = "block";
+    const queryParam = new URLSearchParams(window.location.search);
+    const reSignIn = queryParam.get('reSignIn');
+    if (reSignIn === 'true') {
+        signOut(auth).then(() => {
+            console.log('Sign-Out Successful');
+            inputContainerSignIn.style.display = "block";
+            inputContainerSignUp.style.display = "none";
+        }).catch((error) => {
+            console.log(error);
+        });
+    } else {
+        inputContainerSignIn.style.display = "none";
+        inputContainerSignUp.style.display = "block";
+    }
 });
 
 signInRefer.addEventListener('click', () => {
@@ -160,7 +176,7 @@ signupButton.addEventListener('click', (e) => {
             signupButton.textContent = 'Redirecting...';
             signupButton.style.backgroundColor = '#14d34d';
 
-            sendEmailVerification(auth.currentUser, actionCodeSettings)
+            sendEmailVerification(auth.currentUser, actionCodeSettingsVerifyEmail)
                 .then(() => {
                     console.log(`✔ Successfully Sent Verification Email To ${user.email}`);
                 })
@@ -242,7 +258,7 @@ resetPasswordButton.addEventListener('click', (e) => {
 
     let email = emailInputSignin.value;
 
-    sendPasswordResetEmail(auth, email, actionCodeSettings)
+    sendPasswordResetEmail(auth, email, actionCodeSettingsPasswordReset)
         .then(() => {
             setTimeout(() => {
                 e.target.disabled = false;
