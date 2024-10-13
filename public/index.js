@@ -6,7 +6,15 @@ import {
 }
     from "https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js";
 
-import firebaseConfig from './firebaseConfig.json' assert {type: 'json'};
+const firebaseConfig = {
+    "apiKey": "AIzaSyBGpOR0GEeFHcm606TaVTcC2HDrNoaybu4",
+    "authDomain": "listmeow.firebaseapp.com",
+    "databaseURL": "https://listmeow-default-rtdb.firebaseio.com",
+    "projectId": "listmeow",
+    "storageBucket": "listmeow.appspot.com",
+    "messagingSenderId": "39993979426",
+    "appId": "1:39993979426:web:d617bc170a68c455e3507b"
+};
 
 const inputText = document.getElementById('input-text');
 const addButton = document.getElementById('add-button');
